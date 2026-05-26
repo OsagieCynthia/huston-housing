@@ -64,11 +64,11 @@ describe('SublettingService', () => {
       sublettingLandlordShare: '25',
     });
     requestRepo.create.mockReturnValue(created);
-    requestRepo.save.mockResolvedValue({ id: 'request-1', ...created });
+    requestRepo.save.mockResolvedValue({ ...created, id: 'request-1' });
 
     await expect(service.requestSubletting(dto, 'tenant-1')).resolves.toEqual({
-      id: 'request-1',
       ...created,
+      id: 'request-1',
     });
 
     expect(requestRepo.create).toHaveBeenCalledWith(
@@ -95,7 +95,11 @@ describe('SublettingService', () => {
 
     await expect(
       service.requestSubletting(
-        { agreementId: 'missing', startDate: '2026-06-01', endDate: '2026-06-02' },
+        {
+          agreementId: 'missing',
+          startDate: '2026-06-01',
+          endDate: '2026-06-02',
+        },
         'tenant-1',
       ),
     ).rejects.toThrow(NotFoundException);
@@ -106,7 +110,11 @@ describe('SublettingService', () => {
     });
     await expect(
       service.requestSubletting(
-        { agreementId: 'agreement-1', startDate: '2026-06-01', endDate: '2026-06-02' },
+        {
+          agreementId: 'agreement-1',
+          startDate: '2026-06-01',
+          endDate: '2026-06-02',
+        },
         'tenant-1',
       ),
     ).rejects.toThrow(ForbiddenException);
@@ -118,7 +126,11 @@ describe('SublettingService', () => {
     propertyRepo.findOne.mockResolvedValueOnce({ sublettingAllowed: false });
     await expect(
       service.requestSubletting(
-        { agreementId: 'agreement-1', startDate: '2026-06-01', endDate: '2026-06-02' },
+        {
+          agreementId: 'agreement-1',
+          startDate: '2026-06-01',
+          endDate: '2026-06-02',
+        },
         'tenant-1',
       ),
     ).rejects.toThrow(BadRequestException);
@@ -159,7 +171,11 @@ describe('SublettingService', () => {
     requestRepo.save.mockImplementation(async (value) => value);
 
     await expect(
-      service.approveSubletting('request-1', { notes: 'Approved' }, 'landlord-1'),
+      service.approveSubletting(
+        'request-1',
+        { notes: 'Approved' },
+        'landlord-1',
+      ),
     ).resolves.toMatchObject({
       status: SubletRequestStatus.APPROVED,
       landlordNotes: 'Approved',
@@ -171,14 +187,21 @@ describe('SublettingService', () => {
       'SUBLET_APPROVED',
     );
 
-    requestRepo.findOne.mockResolvedValueOnce({ ...pending, landlordId: 'other' });
+    requestRepo.findOne.mockResolvedValueOnce({
+      ...pending,
+      landlordId: 'other',
+    });
     await expect(
       service.denySubletting('request-1', { reason: 'No' }, 'landlord-1'),
     ).rejects.toThrow(ForbiddenException);
 
     requestRepo.findOne.mockResolvedValueOnce({ ...pending });
     await expect(
-      service.denySubletting('request-1', { reason: 'Calendar conflict' }, 'landlord-1'),
+      service.denySubletting(
+        'request-1',
+        { reason: 'Calendar conflict' },
+        'landlord-1',
+      ),
     ).resolves.toMatchObject({
       status: SubletRequestStatus.DENIED,
       landlordNotes: 'Calendar conflict',
@@ -187,9 +210,13 @@ describe('SublettingService', () => {
 
   it('calculates tenant and landlord earnings from bookings', async () => {
     const bookings = [
-      { tenantEarnings: '100.50', landlordEarnings: '25', payoutProcessed: true },
+      {
+        tenantEarnings: '100.50',
+        landlordEarnings: '25',
+        payoutProcessed: true,
+      },
       { tenantEarnings: 50, landlordEarnings: '15.25', payoutProcessed: false },
-    ] as SubletBooking[];
+    ] as unknown as SubletBooking[];
     bookingRepo.find.mockResolvedValue(bookings);
 
     await expect(service.getTenantEarnings('tenant-1')).resolves.toEqual({
