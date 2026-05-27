@@ -1,10 +1,4 @@
-import {
-  Injectable,
-  BadRequestException,
-  UnauthorizedException,
-  ConflictException,
-  Logger,
-} from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
@@ -29,6 +23,12 @@ import { ReferralService } from '../referral/referral.service';
 import { LoggerService } from '../../common/services/logger.service';
 import { Logging } from '../../common/logger/logging.decorator';
 import { Locked, LockService } from '../../common/lock';
+import {
+  AuthenticationError,
+  ValidationError,
+  DuplicateEntryError,
+} from '../../common/errors/domain-errors';
+import { ErrorCode } from '../../common/errors/error-codes';
 
 const SALT_ROUNDS = 12;
 const MAX_FAILED_ATTEMPTS = 5;
@@ -70,12 +70,12 @@ export class AuthService {
 
     if (existingUser) {
       if (existingUser.deletedAt) {
-        throw new ConflictException(
+        throw new DuplicateEntryError(
           'This email is associated with a deleted account. Please restore your account to continue.',
         );
       }
       this.logger.warn(`Registration attempt for existing email: ${email}`);
-      throw new ConflictException('Email already registered');
+      throw new DuplicateEntryError('Email already registered');
     }
 
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
@@ -146,19 +146,28 @@ export class AuthService {
 
     if (!user) {
       this.logger.warn(`Login attempt for non-existent user: ${email}`);
-      throw new UnauthorizedException('Invalid email or password');
+      throw new AuthenticationError(
+        ErrorCode.AUTH_INVALID_CREDENTIALS,
+        'Invalid email or password',
+      );
     }
 
     if (!user.isActive) {
       this.logger.warn(`Login attempt for inactive account: ${email}`);
-      throw new UnauthorizedException('Invalid email or password');
+      throw new AuthenticationError(
+        ErrorCode.AUTH_ACCOUNT_DISABLED,
+        'Invalid email or password',
+      );
     }
 
     if (user.accountLockedUntil) {
       const now = new Date();
       if (user.accountLockedUntil > now) {
         this.logger.warn(`Login attempt for locked account: ${email}`);
-        throw new UnauthorizedException('Invalid email or password');
+        throw new AuthenticationError(
+          ErrorCode.AUTH_ACCOUNT_LOCKED,
+          'Invalid email or password',
+        );
       } else {
         user.accountLockedUntil = null;
         user.failedLoginAttempts = 0;
@@ -170,7 +179,10 @@ export class AuthService {
     if (!isPasswordValid) {
       await this.handleFailedLogin(user);
       this.logger.warn(`Failed login attempt for user: ${email}`);
-      throw new UnauthorizedException('Invalid email or password');
+      throw new AuthenticationError(
+        ErrorCode.AUTH_INVALID_CREDENTIALS,
+        'Invalid email or password',
+      );
     }
 
     user.failedLoginAttempts = 0;
@@ -227,7 +239,10 @@ export class AuthService {
       });
 
       if (payload.type !== 'refresh') {
-        throw new UnauthorizedException('Invalid token type');
+        throw new AuthenticationError(
+          ErrorCode.AUTH_TOKEN_INVALID,
+          'Invalid token type',
+        );
       }
 
       const user = await this.userRepository.findOne({
@@ -235,7 +250,10 @@ export class AuthService {
       });
 
       if (!user || !user.refreshToken) {
-        throw new UnauthorizedException('User not found or token revoked');
+        throw new AuthenticationError(
+          ErrorCode.AUTH_USER_NOT_FOUND,
+          'User not found or token revoked',
+        );
       }
 
       const isValidRefreshToken = await bcrypt.compare(
@@ -245,7 +263,10 @@ export class AuthService {
 
       if (!isValidRefreshToken) {
         this.logger.warn(`Invalid refresh token for user: ${user.id}`);
-        throw new UnauthorizedException('Invalid refresh token');
+        throw new AuthenticationError(
+          ErrorCode.AUTH_TOKEN_INVALID,
+          'Invalid refresh token',
+        );
       }
 
       // Token rotation: generate new tokens and invalidate old refresh token
@@ -263,7 +284,7 @@ export class AuthService {
           ? error.message
           : 'Invalid or expired refresh token';
       this.logger.error(`Token refresh failed: ${message}`);
-      throw new UnauthorizedException('Invalid or expired refresh token');
+      throw new AuthenticationError(ErrorCode.AUTH_TOKEN_INVALID, 'Invalid or expired refresh token');
     }
   }
 
@@ -343,12 +364,12 @@ export class AuthService {
 
     if (!user) {
       this.logger.warn('Password reset attempt with invalid token');
-      throw new BadRequestException('Invalid or expired reset token');
+      throw new ValidationError('Invalid or expired reset token');
     }
 
     if (!user.resetTokenExpires || user.resetTokenExpires < new Date()) {
       this.logger.warn(`Expired password reset token for user: ${user.id}`);
-      throw new BadRequestException('Reset token has expired');
+      throw new ValidationError('Reset token has expired');
     }
 
     // Validate new password against policy
@@ -378,7 +399,7 @@ export class AuthService {
 
     if (!user) {
       this.logger.warn('Email verification attempt with invalid token');
-      throw new BadRequestException('Invalid verification token');
+      throw new ValidationError('Invalid verification token');
     }
 
     user.emailVerified = true;
@@ -407,11 +428,17 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new UnauthorizedException('User not found');
+      throw new AuthenticationError(
+        ErrorCode.AUTH_USER_NOT_FOUND,
+        'User not found',
+      );
     }
 
     if (!user.isActive) {
-      throw new UnauthorizedException('Account has been deactivated');
+      throw new AuthenticationError(
+        ErrorCode.AUTH_ACCOUNT_DISABLED,
+        'Account has been deactivated',
+      );
     }
 
     return this.sanitizeUser(user);

@@ -19,6 +19,7 @@ import {
   ApiBearerAuth,
   ApiParam,
 } from '@nestjs/swagger';
+import { ApiStandardErrors } from '../../common/decorators/api-standard-errors.decorator';
 import { PropertiesService } from './properties.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
@@ -36,6 +37,7 @@ import { ListingStatus } from './entities/property.entity';
 
 @ApiTags('Properties')
 @Controller('properties')
+@ApiStandardErrors()
 export class PropertiesController {
   constructor(private readonly propertiesService: PropertiesService) {}
 
@@ -52,15 +54,6 @@ export class PropertiesController {
   @ApiResponse({
     status: 201,
     description: 'Property created successfully',
-  })
-  @ApiResponse({ status: 400, description: 'Invalid input data' })
-  @ApiResponse({
-    status: 401,
-    description: 'Unauthorized - JWT token required',
-  })
-  @ApiResponse({
-    status: 403,
-    description: 'Forbidden - insufficient permissions',
   })
   async create(
     @Body() createPropertyDto: CreatePropertyDto,
@@ -102,10 +95,6 @@ export class PropertiesController {
     status: 200,
     description: 'User properties retrieved successfully',
   })
-  @ApiResponse({
-    status: 401,
-    description: 'Unauthorized - JWT token required',
-  })
   async findMyProperties(
     @Query() query: QueryPropertyDto,
     @CurrentUser() user: User,
@@ -130,7 +119,6 @@ export class PropertiesController {
     example: '123e4567-e89b-12d3-a456-426614174000',
   })
   @ApiResponse({ status: 200, description: 'View recorded' })
-  @ApiResponse({ status: 404, description: 'Property not found' })
   async recordView(@Param('id', ParseUUIDPipe) id: string) {
     return await this.propertiesService.recordView(id);
   }

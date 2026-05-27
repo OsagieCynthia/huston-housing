@@ -12,6 +12,9 @@ export enum ErrorCode {
   AUTH_SESSION_EXPIRED = 'AUTH_1006',
   AUTH_MFA_REQUIRED = 'AUTH_1007',
   AUTH_MFA_INVALID = 'AUTH_1008',
+  AUTH_ACCOUNT_LOCKED = 'AUTH_1009',
+  AUTH_ACCOUNT_DISABLED = 'AUTH_1010',
+  AUTH_USER_NOT_FOUND = 'AUTH_1011',
 
   // Validation (2xxx)
   VALIDATION_FAILED = 'VAL_2001',
@@ -116,6 +119,10 @@ export const ERROR_MESSAGES: Record<ErrorCode, string> = {
     'Your session has expired for security reasons',
   [ErrorCode.AUTH_MFA_REQUIRED]: 'Multi-factor authentication is required',
   [ErrorCode.AUTH_MFA_INVALID]: 'Invalid verification code',
+  [ErrorCode.AUTH_ACCOUNT_LOCKED]:
+    'Account is temporarily locked due to too many failed attempts',
+  [ErrorCode.AUTH_ACCOUNT_DISABLED]: 'Account has been deactivated',
+  [ErrorCode.AUTH_USER_NOT_FOUND]: 'User not found',
 
   // Validation
   [ErrorCode.VALIDATION_FAILED]: 'The provided data is invalid',
