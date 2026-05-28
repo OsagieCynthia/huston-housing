@@ -255,19 +255,27 @@ export class PerformanceController {
 
   @Get('response-times')
   @Roles(UserRole.ADMIN, UserRole.SUPER_ADMIN)
-  @ApiOperation({ summary: 'Per-route response-time summary for a sliding window' })
+  @ApiOperation({
+    summary: 'Per-route response-time summary for a sliding window',
+  })
   @ApiQuery({
     name: 'window',
     description: 'Sliding window in seconds',
     required: false,
     example: 60,
   })
-  @ApiResponse({ status: 200, description: 'Response-time stats retrieved successfully' })
+  @ApiResponse({
+    status: 200,
+    description: 'Response-time stats retrieved successfully',
+  })
   @HttpCode(HttpStatus.OK)
   getResponseTimes(@Query('window') window?: string) {
     const windowSeconds = window ? parseInt(window, 10) : 60;
-    const { generatedAt, windowSeconds: ws, routes } =
-      this.performanceMonitor.getResponseTimeStats(windowSeconds);
+    const {
+      generatedAt,
+      windowSeconds: ws,
+      routes,
+    } = this.performanceMonitor.getResponseTimeStats(windowSeconds);
 
     return {
       generated_at: generatedAt.toISOString(),

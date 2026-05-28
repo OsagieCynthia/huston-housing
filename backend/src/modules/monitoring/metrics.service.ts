@@ -120,7 +120,10 @@ export class MetricsService implements OnModuleInit {
     );
   }
 
-  recordBlockchainTransaction(type: string, status: 'success' | 'failure'): void {
+  recordBlockchainTransaction(
+    type: string,
+    status: 'success' | 'failure',
+  ): void {
     this.blockchainTx.inc({ type, status });
   }
 
