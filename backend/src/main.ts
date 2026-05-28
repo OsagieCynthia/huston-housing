@@ -26,6 +26,7 @@ import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
 import { RateLimitInterceptor } from './common/interceptors/rate-limit.interceptor';
 import { ConfigService } from '@nestjs/config';
 import { LoggerService } from './common/services/logger.service';
+import { registerGracefulShutdown } from './config/graceful-shutdown';
 
 const bootstrapLogger = new Logger('Bootstrap');
 
@@ -204,6 +205,8 @@ async function bootstrap() {
     },
     customSiteTitle: 'Chioma API Docs',
   });
+
+  registerGracefulShutdown(app, { logger: bootstrapLogger });
 
   const port = process.env.PORT ?? 5000;
   await app.listen(port);
