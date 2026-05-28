@@ -193,8 +193,19 @@ const appLogger = new Logger('AppModule');
           entities: [__dirname + '/modules/**/*.entity{.ts,.js}'],
           migrations: isTest ? [] : [__dirname + '/migrations/*{.ts,.js}'],
           synchronize: false,
-          logging: true,
+          logging: process.env.TYPEORM_LOGGING === 'true',
           logger: 'advanced-console' as const,
+          // Connection pooling configuration
+          extra: {
+            max: parseInt(process.env.DB_POOL_MAX || '20'),
+            min: parseInt(process.env.DB_POOL_MIN || '5'),
+            idleTimeoutMillis: parseInt(
+              process.env.DB_POOL_IDLE_TIMEOUT || '30000',
+            ),
+            connectionTimeoutMillis: parseInt(
+              process.env.DB_POOL_CONNECTION_TIMEOUT || '2000',
+            ),
+          },
         };
         console.log('[DEBUG] TypeORM Config:', {
           host: config.host,
@@ -203,6 +214,7 @@ const appLogger = new Logger('AppModule');
           database: config.database,
           synchronize: config.synchronize,
           logging: config.logging,
+          pool: config.extra,
         });
         return config;
       },

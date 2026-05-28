@@ -193,24 +193,24 @@ describe('AuthService — comprehensive coverage', () => {
       jest.spyOn(bcrypt, 'hash').mockResolvedValue('hashed-password' as never);
 
       const result = await service.register({
-         email: 'user@example.com',
-         password: 'Password123!',
-         firstName: 'Jane',
-         lastName: 'Doe',
-         role: UserRole.USER,
-       });
- 
-       expect(result).toEqual(
-         expect.objectContaining({
-           user: expect.objectContaining({
-             email: 'user@example.com',
-           }),
-         }),
-       );
-       expect(mockUserRepository.create).toHaveBeenCalled();
-       expect(mockUserRepository.save).toHaveBeenCalled();
-     });
-   });
+        email: 'user@example.com',
+        password: 'Password123!',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        role: UserRole.USER,
+      });
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          user: expect.objectContaining({
+            email: 'user@example.com',
+          }),
+        }),
+      );
+      expect(mockUserRepository.create).toHaveBeenCalled();
+      expect(mockUserRepository.save).toHaveBeenCalled();
+    });
+  });
 
   // ── sanitizeUser ──────────────────────────────────────────────────────────
 

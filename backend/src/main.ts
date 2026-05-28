@@ -1,4 +1,10 @@
 import * as Sentry from '@sentry/nestjs';
+import { startTracing } from './common/tracing/tracing';
+
+// Initialize OpenTelemetry tracing FIRST
+if (process.env.OTEL_ENABLED !== 'false') {
+  startTracing();
+}
 
 // Initialize Sentry BEFORE loading any other module
 Sentry.init({
