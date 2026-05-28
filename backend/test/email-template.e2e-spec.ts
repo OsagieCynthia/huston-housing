@@ -58,7 +58,7 @@ describe('Email Template Integration (e2e)', () => {
         content: '<strong>Important notification</strong>',
       };
 
-      const result = await emailService.renderTemplate('generic_notification', templateData);
+      const result = emailService.renderTemplate('generic_notification', templateData);
 
       expect(result.html).toBeDefined();
       expect(result.html).toContain('html');
@@ -71,7 +71,7 @@ describe('Email Template Integration (e2e)', () => {
         content: 'Plain text content',
       };
 
-      const result = await emailService.renderTemplate('generic_notification', templateData);
+      const result = emailService.renderTemplate('generic_notification', templateData);
 
       expect(result.text).toBeDefined();
       expect(result.text).not.toContain('<');
@@ -85,7 +85,7 @@ describe('Email Template Integration (e2e)', () => {
         attachmentName: 'document.pdf',
       };
 
-      const result = await emailService.renderTemplate('document_delivery', templateData);
+      const result = emailService.renderTemplate('document_delivery', templateData);
 
       expect(result).toBeDefined();
       expect(result.attachments || []).toBeDefined();
@@ -100,7 +100,7 @@ describe('Email Template Integration (e2e)', () => {
         ],
       };
 
-      const result = await emailService.renderTemplate('documents', templateData);
+      const result = emailService.renderTemplate('documents', templateData);
 
       expect(result).toBeDefined();
     });
@@ -113,7 +113,7 @@ describe('Email Template Integration (e2e)', () => {
         locale: 'en',
       };
 
-      const result = await emailService.renderTemplate('welcome', templateData);
+      const result = emailService.renderTemplate('welcome', templateData);
 
       expect(result).toBeDefined();
       expect(result.subject).toBeDefined();
@@ -125,7 +125,7 @@ describe('Email Template Integration (e2e)', () => {
         locale: 'es',
       };
 
-      const result = await emailService.renderTemplate('welcome', templateData);
+      const result = emailService.renderTemplate('welcome', templateData);
 
       expect(result).toBeDefined();
       expect(result.subject).toBeDefined();
@@ -137,7 +137,7 @@ describe('Email Template Integration (e2e)', () => {
         locale: 'fr',
       };
 
-      const result = await emailService.renderTemplate('welcome', templateData);
+      const result = emailService.renderTemplate('welcome', templateData);
 
       expect(result).toBeDefined();
       expect(result.subject).toBeDefined();
@@ -149,7 +149,7 @@ describe('Email Template Integration (e2e)', () => {
         locale: 'unknown',
       };
 
-      const result = await emailService.renderTemplate('welcome', templateData);
+      const result = emailService.renderTemplate('welcome', templateData);
 
       expect(result).toBeDefined();
       expect(result.subject).toBeDefined();
@@ -163,7 +163,7 @@ describe('Email Template Integration (e2e)', () => {
         content: 'This is the main content',
       };
 
-      const result = await emailService.renderTemplate('generic_notification', templateData);
+      const result = emailService.renderTemplate('generic_notification', templateData);
 
       expect(result.preview || result.text).toBeDefined();
     });
@@ -174,7 +174,7 @@ describe('Email Template Integration (e2e)', () => {
         content: 'This is a very long content that should be truncated in preview mode. '.repeat(10),
       };
 
-      const result = await emailService.renderTemplate('generic_notification', templateData);
+      const result = emailService.renderTemplate('generic_notification', templateData);
 
       const preview = result.preview || result.text || '';
       expect(preview.length).toBeLessThanOrEqual(160);
