@@ -3,8 +3,10 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
-import { UnauthorizedException } from '@nestjs/common';
-import { AuthenticationError } from '../../common/errors';
+import {
+  AuthenticationError,
+  DuplicateEntryError,
+} from '../../common/errors/domain-errors';
 import { AuthService } from './auth.service';
 import { User, UserRole } from '../users/entities/user.entity';
 import { MfaDevice } from './entities/mfa-device.entity';
@@ -167,6 +169,49 @@ describe('AuthService — comprehensive coverage', () => {
     });
   });
 
+  // ── register ─────────────────────────────────────────────────────────────
+
+  describe('register', () => {
+    it('throws DuplicateEntryError when email is already registered', async () => {
+      mockUserRepository.findOne.mockResolvedValue(mockUser);
+
+      await expect(
+        service.register({
+          email: 'user@example.com',
+          password: 'Password123!',
+          firstName: 'Jane',
+          lastName: 'Doe',
+          role: UserRole.USER,
+        }),
+      ).rejects.toThrow(DuplicateEntryError);
+    });
+
+    it('successfully registers a new user', async () => {
+      mockUserRepository.findOne.mockResolvedValue(null);
+      mockUserRepository.create.mockReturnValue(mockUser);
+      mockUserRepository.save.mockResolvedValue(mockUser);
+      jest.spyOn(bcrypt, 'hash').mockResolvedValue('hashed-password' as never);
+
+      const result = await service.register({
+        email: 'user@example.com',
+        password: 'Password123!',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        role: UserRole.USER,
+      });
+
+      expect(result).toEqual(
+        expect.objectContaining({
+          user: expect.objectContaining({
+            email: 'user@example.com',
+          }),
+        }),
+      );
+      expect(mockUserRepository.create).toHaveBeenCalled();
+      expect(mockUserRepository.save).toHaveBeenCalled();
+    });
+  });
+
   // ── sanitizeUser ──────────────────────────────────────────────────────────
 
   describe('sanitizeUser', () => {
@@ -273,7 +318,22 @@ describe('AuthService — comprehensive coverage', () => {
       ).rejects.toThrow(AuthenticationError);
     });
 
-    it('throws UnauthorizedException when bcrypt comparison fails (token mismatch)', async () => {
+    it('throws AuthenticationError when the user is no longer active', async () => {
+      mockJwtService.verify.mockReturnValue({
+        sub: 'user-1',
+        type: 'refresh',
+      });
+      mockUserRepository.findOne.mockResolvedValue({
+        ...mockUser,
+        isActive: false,
+      });
+
+      await expect(
+        service.refreshToken({ refreshToken: 'valid-token' }),
+      ).rejects.toThrow(AuthenticationError);
+    });
+
+    it('throws AuthenticationError when bcrypt comparison fails (token mismatch)', async () => {
       mockJwtService.verify.mockReturnValue({
         sub: 'user-1',
         email: 'user@example.com',
@@ -288,7 +348,7 @@ describe('AuthService — comprehensive coverage', () => {
       ).rejects.toThrow(AuthenticationError);
     });
 
-    it('throws UnauthorizedException when jwtService.verify throws', async () => {
+    it('throws AuthenticationError when jwtService.verify throws', async () => {
       mockJwtService.verify.mockImplementation(() => {
         throw new Error('jwt expired');
       });

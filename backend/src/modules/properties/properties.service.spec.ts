@@ -1,15 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import {
-  NotFoundException,
-  ForbiddenException,
-  BadRequestException,
-} from '@nestjs/common';
-import {
   PropertyNotFoundError,
   AuthorizationError,
   BusinessRuleViolationError,
-} from '../../common/errors';
+} from '../../common/errors/domain-errors';
 import { CacheService } from '../../common/cache/cache.service';
 import { PropertiesService } from './properties.service';
 import {
@@ -358,7 +353,7 @@ describe('PropertiesService', () => {
       mockPropertyRepository.findOne.mockResolvedValue(null);
 
       await expect(service.findOne('missing-uuid')).rejects.toThrow(
-        PropertyNotFoundError,
+        'Property with ID missing-uuid not found',
       );
     });
 
@@ -408,7 +403,7 @@ describe('PropertiesService', () => {
       mockPropertyRepository.findOne.mockResolvedValue(null);
 
       await expect(service.findOnePublic('unknown-id')).rejects.toThrow(
-        PropertyNotFoundError,
+        'Property with ID unknown-id not found',
       );
     });
 
@@ -419,7 +414,7 @@ describe('PropertiesService', () => {
       });
 
       await expect(service.findOnePublic('property-id')).rejects.toThrow(
-        PropertyNotFoundError,
+        'Property with ID property-id not found',
       );
     });
 
@@ -430,7 +425,7 @@ describe('PropertiesService', () => {
       });
 
       await expect(service.findOnePublic('property-id')).rejects.toThrow(
-        PropertyNotFoundError,
+        'Property with ID property-id not found',
       );
     });
 
@@ -441,7 +436,7 @@ describe('PropertiesService', () => {
       });
 
       await expect(service.findOnePublic('property-id')).rejects.toThrow(
-        PropertyNotFoundError,
+        'Property with ID property-id not found',
       );
     });
 
