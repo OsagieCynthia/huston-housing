@@ -91,6 +91,16 @@ test-e2e: ## Run end-to-end tests (requires PostgreSQL)
 	pnpm run test:e2e --forceExit
 	@echo "$(GREEN)✓ E2E tests passed$(NC)"
 
+test-mutation: ## Run mutation tests (Stryker)
+	@echo "$(BLUE)Running mutation tests...$(NC)"
+	pnpm run test:mutation
+	@echo "$(GREEN)✓ Mutation tests complete$(NC)"
+
+test-mutation-fast: ## Run mutation tests on a subset of files (common utils)
+	@echo "$(BLUE)Running fast mutation tests...$(NC)"
+	pnpm run test:mutation:fast
+	@echo "$(GREEN)✓ Fast mutation tests complete$(NC)"
+
 test-chaos: ## Run chaos engineering resilience tests (requires PostgreSQL)
 	@echo "$(BLUE)Running chaos engineering tests...$(NC)"
 	@echo "$(YELLOW)Note: Ensure PostgreSQL is running and environment variables are set$(NC)"
@@ -143,7 +153,7 @@ ci: install format-check lint typecheck test-contract test-cov build ## Run full
 security-ci: install security-lint security-test build ## Run security CI pipeline (matches backend-security-ci-cd.yml)
 	@echo "$(GREEN)✓ Security CI pipeline passed$(NC)"
 
-test-ci: install test-unit test-cov ## Run continuous testing baseline (matches backend-tests.yml)
+test-ci: install test-unit test-contract test-cov ## Run test pipeline (matches backend-tests.yml unit tests)
 	@echo "$(GREEN)✓ Test CI pipeline passed$(NC)"
 
 all: ci security-ci ## Run all CI/CD pipelines
