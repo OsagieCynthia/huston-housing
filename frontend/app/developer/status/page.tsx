@@ -130,7 +130,7 @@ export default function ApiStatusPage() {
         <div>
           <h2 className="text-2xl font-bold text-white">API Status</h2>
           <p className="text-blue-200/60 text-sm mt-1">
-            Live uptime metrics and incident history for all Chioma services.
+            Live uptime metrics and incident history for all Houston Housing services.
           </p>
         </div>
         <div

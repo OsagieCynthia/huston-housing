@@ -22,7 +22,7 @@ import {
 } from './notifications.types';
 
 const queryKey = ['landlord-notifications'];
-const archivedStorageKey = 'chioma_landlord_archived_notifications';
+const archivedStorageKey = 'huston-housing_landlord_archived_notifications';
 const PAGE_SIZE = 6;
 
 type NotificationsListProps = {

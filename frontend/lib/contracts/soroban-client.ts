@@ -47,7 +47,7 @@ async function simulateContractCall(
   return retval ? scValToNative(retval) : null;
 }
 
-export interface ChiomaContractState {
+export interface Houston HousingContractState {
   admin?: string;
   config?: {
     fee_bps?: number;
@@ -57,13 +57,13 @@ export interface ChiomaContractState {
   initialized?: boolean;
 }
 
-export async function readChiomaState(): Promise<ChiomaContractState | null> {
-  const { chioma } = getContractIds();
-  if (!chioma) return null;
+export async function readHouston HousingState(): Promise<Houston HousingContractState | null> {
+  const { huston-housing } = getContractIds();
+  if (!huston-housing) return null;
   return (await simulateContractCall(
-    chioma,
+    huston-housing,
     'get_state',
-  )) as ChiomaContractState;
+  )) as Houston HousingContractState;
 }
 
 export async function readContractMethod<T>(

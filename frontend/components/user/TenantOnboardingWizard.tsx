@@ -50,7 +50,7 @@ const STEP_META = [
   {
     title: 'Feature Discovery',
     icon: Zap,
-    description: 'Learn what Chioma offers',
+    description: 'Learn what Houston Housing offers',
   },
 ];
 

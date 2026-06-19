@@ -47,7 +47,7 @@ export default function PwaController() {
     const onAppInstalled = () => {
       setInstallEvent(null);
       setDismissedIosPrompt(true);
-      toast.success('Chioma is installed and ready offline.');
+      toast.success('Houston Housing is installed and ready offline.');
     };
 
     window.addEventListener('beforeinstallprompt', onBeforeInstallPrompt);
@@ -111,11 +111,11 @@ export default function PwaController() {
 
     if (choice.outcome === 'accepted') {
       setInstallEvent(null);
-      toast.success('Install started. Chioma will appear on your home screen.');
+      toast.success('Install started. Houston Housing will appear on your home screen.');
       return;
     }
 
-    toast('Install dismissed. You can install Chioma later from this banner.');
+    toast('Install dismissed. You can install Houston Housing later from this banner.');
   };
 
   const applyUpdate = () => {
@@ -137,7 +137,7 @@ export default function PwaController() {
     setRequestingNotifications(false);
 
     if (permission === 'granted') {
-      toast.success('Notifications enabled for Chioma.');
+      toast.success('Notifications enabled for Houston Housing.');
       return;
     }
 
@@ -151,7 +151,7 @@ export default function PwaController() {
           <div>
             <p className="text-sm font-semibold text-blue-300">Update ready</p>
             <p className="mt-1 text-sm text-slate-200">
-              A newer version of Chioma is available.
+              A newer version of Houston Housing is available.
             </p>
           </div>
           <button
@@ -187,9 +187,9 @@ export default function PwaController() {
   if (installEvent) {
     return (
       <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-md rounded-2xl border border-emerald-500/30 bg-slate-950/95 p-4 text-white shadow-2xl backdrop-blur">
-        <p className="text-sm font-semibold text-emerald-300">Install Chioma</p>
+        <p className="text-sm font-semibold text-emerald-300">Install Houston Housing</p>
         <p className="mt-1 text-sm text-slate-200">
-          Add Chioma to your home screen for faster launches and offline access.
+          Add Houston Housing to your home screen for faster launches and offline access.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <button

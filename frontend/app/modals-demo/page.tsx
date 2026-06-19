@@ -96,7 +96,7 @@ export default function ModalsDemo() {
                 bedrooms: 3,
                 bathrooms: 3,
                 areaSqft: 1850,
-                landlordName: 'Chioma Estates',
+                landlordName: 'Houston Housing Estates',
                 description:
                   'Modern duplex with a fitted kitchen, backup power, and secure estate access.',
                 images: [
@@ -129,7 +129,7 @@ export default function ModalsDemo() {
                 agreementId: 'agreement-001',
                 propertyTitle: 'Contemporary 3BR Duplex',
                 propertyAddress: '12 Admiralty Way, Lekki, Lagos',
-                landlordName: 'Chioma Estates',
+                landlordName: 'Houston Housing Estates',
                 tenantName: 'Ada Johnson',
                 monthlyRent: 3200,
                 securityDeposit: 6400,

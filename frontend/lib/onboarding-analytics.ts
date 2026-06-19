@@ -15,7 +15,7 @@ export function trackTenantOnboardingEvent(
   if (typeof window === 'undefined') return;
 
   window.dispatchEvent(
-    new CustomEvent('chioma:tenant:onboarding:analytics', {
+    new CustomEvent('huston-housing:tenant:onboarding:analytics', {
       detail: {
         eventName,
         payload,

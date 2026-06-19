@@ -10,11 +10,11 @@ const EXAMPLES = [
     description:
       'Send USDC rent from a tenant wallet to landlord + agent via Stellar.',
     language: 'typescript',
-    code: `import { ChiomaClient } from '@chioma/sdk';
+    code: `import { Houston HousingClient } from '@huston-housing/sdk';
 
-const chioma = new ChiomaClient({ apiKey: process.env.CHIOMA_SECRET_KEY });
+const huston-housing = new Houston HousingClient({ apiKey: process.env.HUSTON_HOUSING_SECRET_KEY });
 
-const payment = await chioma.payments.initiateRent({
+const payment = await huston-housing.payments.initiateRent({
   tenantId: 'usr_abc123',
   propertyId: 'prop_xyz789',
   amount: '1500.00',
@@ -29,14 +29,14 @@ console.log(payment.stellarTxHash);
     id: 'webhook-verify',
     title: 'Verify a Webhook Signature',
     description:
-      'Validate the X-Chioma-Signature header to ensure authenticity.',
+      'Validate the X-Houston Housing-Signature header to ensure authenticity.',
     language: 'typescript',
-    code: `import { verifyWebhookSignature } from '@chioma/sdk/webhooks';
+    code: `import { verifyWebhookSignature } from '@huston-housing/sdk/webhooks';
 
-app.post('/chioma-webhook', (req, res) => {
+app.post('/huston-housing-webhook', (req, res) => {
   const rawBody = req.rawBody; // Buffer
-  const signature = req.headers['x-chioma-signature'];
-  const secret = process.env.CHIOMA_WEBHOOK_SECRET;
+  const signature = req.headers['x-huston-housing-signature'];
+  const secret = process.env.HUSTON_HOUSING_WEBHOOK_SECRET;
 
   const isValid = verifyWebhookSignature(rawBody, signature, secret);
 
@@ -58,11 +58,11 @@ app.post('/chioma-webhook', (req, res) => {
     description:
       'Fetch paginated property listings with optional location filter.',
     language: 'typescript',
-    code: `import { ChiomaClient } from '@chioma/sdk';
+    code: `import { Houston HousingClient } from '@huston-housing/sdk';
 
-const chioma = new ChiomaClient({ apiKey: process.env.CHIOMA_SECRET_KEY });
+const huston-housing = new Houston HousingClient({ apiKey: process.env.HUSTON_HOUSING_SECRET_KEY });
 
-const { data, meta } = await chioma.properties.list({
+const { data, meta } = await huston-housing.properties.list({
   location: 'Lagos, Nigeria',
   minRent: 500,
   maxRent: 2000,
@@ -80,11 +80,11 @@ data.forEach((property) => {
     title: 'Release Security Deposit',
     description: 'Release a locked escrow deposit on move-out approval.',
     language: 'typescript',
-    code: `import { ChiomaClient } from '@chioma/sdk';
+    code: `import { Houston HousingClient } from '@huston-housing/sdk';
 
-const chioma = new ChiomaClient({ apiKey: process.env.CHIOMA_SECRET_KEY });
+const huston-housing = new Houston HousingClient({ apiKey: process.env.HUSTON_HOUSING_SECRET_KEY });
 
-const result = await chioma.payments.releaseEscrow({
+const result = await huston-housing.payments.releaseEscrow({
   leaseId: 'lease_mn456',
   reason: 'move_out_approved',
   approvedBy: 'usr_landlord_789',
@@ -111,7 +111,7 @@ export default function ExamplesPage() {
       <div>
         <h2 className="text-2xl font-bold text-white">Code Examples</h2>
         <p className="text-blue-200/60 text-sm mt-1">
-          Ready-to-run snippets covering the most common Chioma integration
+          Ready-to-run snippets covering the most common Houston Housing integration
           patterns.
         </p>
       </div>

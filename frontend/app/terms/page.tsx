@@ -31,7 +31,7 @@ export default function TermsPage() {
                   1. Acceptance of Terms
                 </h2>
                 <p className="mb-4 text-sm sm:text-base leading-relaxed">
-                  By accessing and using Chioma Properties (hereinafter referred
+                  By accessing and using Houston Housing Properties (hereinafter referred
                   to as &quot;the Platform&quot;), you accept and agree to be
                   bound by the terms and provision of this agreement.
                   Additionally, when using the Platform&apos;s services, you
@@ -54,7 +54,7 @@ export default function TermsPage() {
                   2. Description of Service
                 </h2>
                 <p className="mb-4 text-sm sm:text-base leading-relaxed">
-                  Chioma Properties provides users with access to a rich
+                  Houston Housing Properties provides users with access to a rich
                   collection of resources, including various communications
                   tools, forums, shopping services, personalized content, and
                   branded programming through its network of properties. You
@@ -65,7 +65,7 @@ export default function TermsPage() {
                 <p className="text-sm sm:text-base leading-relaxed">
                   Unless explicitly stated otherwise, any new features that
                   augment or enhance the current Service, including the release
-                  of new Chioma Properties properties, shall be subject to the
+                  of new Houston Housing Properties properties, shall be subject to the
                   Terms of Service. You understand and agree that the Service is
                   provided &quot;AS IS&quot; and that the Platform assumes no
                   responsibility for the timeliness, deletion, misdelivery, or
@@ -136,7 +136,7 @@ export default function TermsPage() {
                   defamatory, vulgar, obscene, libelous, invasive of
                   another&apos;s privacy, hateful, or racially, ethnically, or
                   otherwise objectionable; harm minors in any way; impersonate
-                  any person or entity, including, but not limited to, a Chioma
+                  any person or entity, including, but not limited to, a Houston Housing
                   Properties official, forum leader, guide, or host, or falsely
                   state or otherwise misrepresent your affiliation with a person
                   or entity.
@@ -301,8 +301,8 @@ export default function TermsPage() {
                 </h2>
                 <p className="text-sm sm:text-base leading-relaxed">
                   If you have any questions about these Terms and Conditions,
-                  please contact us at: support@chiomaproperties.com or call our
-                  customer service line at +234 800 CHIOMA (244662).
+                  please contact us at: support@huston-housingproperties.com or call our
+                  customer service line at +234 800 HUSTON_HOUSING (244662).
                 </p>
               </section>
             </div>
@@ -326,7 +326,7 @@ export default function TermsPage() {
                     I have read and understood the Terms and Conditions and I
                     agree to be bound by all of its provisions. I understand
                     that by checking this box, I am entering into a legally
-                    binding agreement with Chioma Properties.
+                    binding agreement with Houston Housing Properties.
                   </label>
                 </div>
 

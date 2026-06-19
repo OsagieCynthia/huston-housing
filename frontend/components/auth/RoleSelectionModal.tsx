@@ -83,7 +83,7 @@ export default function RoleSelectionModal({
       <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 max-w-2xl w-full border border-white/10 shadow-2xl">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-white mb-2">
-            Welcome to Chioma
+            Welcome to Houston Housing
           </h2>
           <p className="text-blue-200/60">Select your role to get started</p>
         </div>

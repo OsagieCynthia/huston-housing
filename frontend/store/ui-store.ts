@@ -140,7 +140,7 @@ export const useUIStore = create<UIStore>()(
       'ui',
     ),
     {
-      name: 'chioma-ui',
+      name: 'huston-housing-ui',
       storage: createJSONStorage(() =>
         typeof window !== 'undefined' ? localStorage : noopStorage,
       ),

@@ -486,7 +486,7 @@ export default function UserProfilePage() {
                     Account Fully Verified
                   </h4>
                   <p className="text-xs text-emerald-400/70 mt-0.5">
-                    You have full access to all Chioma services and high
+                    You have full access to all Houston Housing services and high
                     transaction limits.
                   </p>
                 </div>

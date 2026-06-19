@@ -108,7 +108,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               C
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-blue-300 to-indigo-300 bg-clip-text text-transparent tracking-tight">
-              Chioma
+              Houston Housing
             </span>
           </Link>
         </div>

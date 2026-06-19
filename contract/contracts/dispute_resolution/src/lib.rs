@@ -43,7 +43,7 @@ impl DisputeResolutionContract {
     /// # Arguments
     /// * `admin` - The address that will have admin privileges to add arbiters
     /// * `min_votes_required` - Minimum number of votes required to resolve a dispute (default: 3)
-    /// * `chioma_contract` - Address of the chioma rental agreement contract
+    /// * `huston-housing_contract` - Address of the huston-housing rental agreement contract
     ///
     /// # Errors
     /// * `AlreadyInitialized` - If the contract has already been initialized
@@ -51,7 +51,7 @@ impl DisputeResolutionContract {
         env: Env,
         admin: Address,
         min_votes_required: u32,
-        chioma_contract: Address,
+        huston-housing_contract: Address,
     ) -> Result<(), DisputeError> {
         if env.storage().persistent().has(&DataKey::Initialized) {
             return Err(DisputeError::AlreadyInitialized);
@@ -68,7 +68,7 @@ impl DisputeResolutionContract {
             admin: admin.clone(),
             initialized: true,
             min_votes_required,
-            chioma_contract,
+            huston-housing_contract,
         };
 
         env.storage().instance().set(&DataKey::State, &state);

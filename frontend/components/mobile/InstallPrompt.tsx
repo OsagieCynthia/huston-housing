@@ -54,10 +54,10 @@ export default function InstallPrompt() {
         <div className="flex items-start justify-between gap-3">
           <div>
             <p className="text-sm font-semibold text-white">
-              Install Chioma App
+              Install Houston Housing App
             </p>
             <p className="text-xs text-blue-200/70 mt-1">
-              Add Chioma to your home screen for faster access and better
+              Add Houston Housing to your home screen for faster access and better
               offline support.
             </p>
           </div>

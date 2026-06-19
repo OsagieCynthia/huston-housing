@@ -2,7 +2,7 @@
  * Service Worker for offline support, install prompts, and background sync.
  */
 
-const VERSION = 'chioma-pwa-v2';
+const VERSION = 'huston-housing-pwa-v2';
 const STATIC_CACHE = `${VERSION}-static`;
 const RUNTIME_CACHE = `${VERSION}-runtime`;
 const OFFLINE_URL = '/offline';
@@ -98,7 +98,7 @@ self.addEventListener('push', (event) => {
     payload = {};
   }
 
-  const title = payload.title || 'Chioma update';
+  const title = payload.title || 'Houston Housing update';
   const options = {
     body: payload.body || 'A new update is available.',
     icon: '/android_192.png',
@@ -112,7 +112,7 @@ self.addEventListener('push', (event) => {
 });
 
 self.addEventListener('sync', (event) => {
-  if (event.tag === 'chioma-offline-sync') {
+  if (event.tag === 'huston-housing-offline-sync') {
     event.waitUntil(
       self.clients.matchAll().then((clients) => {
         clients.forEach((client) => {

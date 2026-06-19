@@ -62,7 +62,7 @@ This Lease Agreement ("Agreement") is entered into on this 1st day of June, 2024
 
 PARTY 1: Chief Emeka Okonkwo
 PARTY 2: Adaeze Nwankwo
-PARTY 3: Sarah Jenks (Chioma Platform Agent #8839)
+PARTY 3: Sarah Jenks (Houston Housing Platform Agent #8839)
 
 PROPERTY: Sunrise Apartments - Unit 4B, 12 Victoria Island Rd, Lagos, Nigeria
 
@@ -76,7 +76,7 @@ PROPERTY: Sunrise Apartments - Unit 4B, 12 Victoria Island Rd, Lagos, Nigeria
 
 5. MAINTENANCE: Party 1 is responsible for structural repairs. Party 2 is responsible for routine maintenance and keeping the premises in good condition.
 
-6. DISPUTE RESOLUTION: Any disputes shall be resolved through the Chioma platform arbitration process.
+6. DISPUTE RESOLUTION: Any disputes shall be resolved through the Houston Housing platform arbitration process.
 
 7. TERMINATION: Either party may terminate with 30 days written notice.`,
   },
@@ -90,7 +90,7 @@ PROPERTY: Sunrise Apartments - Unit 4B, 12 Victoria Island Rd, Lagos, Nigeria
       role: 'USER',
     },
     party2: {
-      name: 'Chioma Okafor',
+      name: 'Houston Housing Okafor',
       walletAddress: 'GHIJ...5M0N',
       role: 'USER',
     },
@@ -108,7 +108,7 @@ PROPERTY: Sunrise Apartments - Unit 4B, 12 Victoria Island Rd, Lagos, Nigeria
 This Lease Agreement ("Agreement") is entered into on this 1st day of July, 2024, by and between:
 
 PARTY 1: James Adebayo
-PARTY 2: Chioma Okafor
+PARTY 2: Houston Housing Okafor
 
 PROPERTY: Glover Road Residence - Suite A, Ikoyi, Lagos, Nigeria
 
@@ -118,8 +118,8 @@ PROPERTY: Glover Road Residence - Suite A, Ikoyi, Lagos, Nigeria
 
 3. SECURITY DEPOSIT: A security deposit of $400,000 USDC shall be held in escrow.
 
-4. MAINTENANCE: Standard maintenance responsibilities apply as per Chioma platform guidelines.
+4. MAINTENANCE: Standard maintenance responsibilities apply as per Houston Housing platform guidelines.
 
-5. DISPUTE RESOLUTION: Any disputes shall be resolved through the Chioma platform arbitration process.`,
+5. DISPUTE RESOLUTION: Any disputes shall be resolved through the Houston Housing platform arbitration process.`,
   },
 ];

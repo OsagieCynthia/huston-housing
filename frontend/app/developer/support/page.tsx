@@ -14,8 +14,8 @@ const RESOURCES = [
     icon: MessageCircle,
     label: 'Community (Telegram)',
     description:
-      'Join 500+ builders in the Chioma developer community. Ask questions, share projects.',
-    href: 'https://t.me/chiomagroup',
+      'Join 500+ builders in the Houston Housing developer community. Ask questions, share projects.',
+    href: 'https://t.me/huston-housinggroup',
     cta: 'Join the group',
     color: 'text-blue-400',
     bg: 'bg-blue-500/15 border-blue-400/20',
@@ -26,7 +26,7 @@ const RESOURCES = [
     label: 'Email Support',
     description:
       'For urgent issues, billing questions, or private security disclosures.',
-    href: 'mailto:developers@chioma.app',
+    href: 'mailto:developers@huston-housing.app',
     cta: 'Send an email',
     color: 'text-indigo-400',
     bg: 'bg-indigo-500/15 border-indigo-400/20',
@@ -47,11 +47,11 @@ const RESOURCES = [
 const FAQS = [
   {
     q: 'Which Stellar network should I use for testing?',
-    a: 'Chioma sandbox environments are configured against Stellar Testnet. Use the test Friendbot to fund wallets and set your API key environment to "sandbox".',
+    a: 'Houston Housing sandbox environments are configured against Stellar Testnet. Use the test Friendbot to fund wallets and set your API key environment to "sandbox".',
   },
   {
     q: 'How do I handle webhook failures and retries?',
-    a: 'Chioma retries failed webhook deliveries up to 5 times with exponential back-off (1 min, 5 min, 30 min, 2 h, 8 h). We recommend returning 200 quickly and processing asynchronously.',
+    a: 'Houston Housing retries failed webhook deliveries up to 5 times with exponential back-off (1 min, 5 min, 30 min, 2 h, 8 h). We recommend returning 200 quickly and processing asynchronously.',
   },
   {
     q: 'Can I accept currencies other than USDC?',

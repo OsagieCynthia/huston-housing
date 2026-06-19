@@ -56,5 +56,5 @@ export const MOCK_REFERRAL_STATS: ReferralStats = {
       createdAt: new Date(Date.now() - 3 * 86400000).toISOString(),
     },
   ],
-  referralCode: 'CHIOMA-TRUST-2024',
+  referralCode: 'HUSTON_HOUSING-TRUST-2024',
 };

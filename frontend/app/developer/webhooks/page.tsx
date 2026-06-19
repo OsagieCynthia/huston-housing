@@ -354,7 +354,7 @@ export default function DeveloperWebhooksPage() {
               Webhook Management
             </div>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-white">
-              Deliver Chioma events to your systems
+              Deliver Houston Housing events to your systems
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
               Create endpoints, inspect delivery history, retry failed events,

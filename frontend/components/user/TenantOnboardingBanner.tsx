@@ -8,7 +8,7 @@ import {
   getTenantOnboardingProgress,
 } from '@/lib/tenant-onboarding';
 
-const DISMISSED_KEY = 'chioma_onboarding_banner_dismissed';
+const DISMISSED_KEY = 'huston-housing_onboarding_banner_dismissed';
 
 export function TenantOnboardingBanner() {
   const [show, setShow] = useState(false);

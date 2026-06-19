@@ -124,7 +124,7 @@ export function WebhookTest({
             <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-950/70 p-3 text-xs text-slate-200">
               {`curl -X ${webhook.method} '${webhook.url}' \\
   -H 'Content-Type: application/json' \\
-  -H 'X-Chioma-Signature: ${webhook.signingSecret}' \\
+  -H 'X-Houston Housing-Signature: ${webhook.signingSecret}' \\
   -d '${payload.replace(/\n/g, '')}'`}
             </pre>
           </div>

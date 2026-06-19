@@ -9,7 +9,7 @@ const testimonials = [
     name: 'Sarah Johnson',
     role: 'Property Manager',
     content:
-      'Chioma has transformed how we manage our rental portfolio. Instant payments and automated commissions save us hours every week.',
+      'Houston Housing has transformed how we manage our rental portfolio. Instant payments and automated commissions save us hours every week.',
     rating: 5,
   },
   {

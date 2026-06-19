@@ -56,8 +56,8 @@ export type DeveloperWebhookFormValues = {
   authValue?: string;
 };
 
-const WEBHOOKS_STORAGE_KEY = 'chioma_developer_webhooks';
-const LOGS_STORAGE_KEY = 'chioma_developer_webhook_logs';
+const WEBHOOKS_STORAGE_KEY = 'huston-housing_developer_webhooks';
+const LOGS_STORAGE_KEY = 'huston-housing_developer_webhook_logs';
 
 export const AVAILABLE_WEBHOOK_EVENTS = [
   'agreement.created',
@@ -137,7 +137,7 @@ function createMockWebhook(ownerId: string, index: number): DeveloperWebhook {
     signingSecret: createSigningSecret(),
     archived: false,
     headers: {
-      'X-Chioma-Source': 'developer-portal',
+      'X-Houston Housing-Source': 'developer-portal',
       'X-Webhook-Index': String(index + 1),
     },
     stats: {

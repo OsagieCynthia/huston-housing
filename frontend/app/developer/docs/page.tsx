@@ -191,9 +191,9 @@ export default function ApiDocsPage() {
         <div>
           <h2 className="text-2xl font-bold text-white">API Documentation</h2>
           <p className="text-blue-200/60 text-sm mt-1">
-            REST endpoints for Chioma&apos;s rental infrastructure. Base URL:{' '}
+            REST endpoints for Houston Housing&apos;s rental infrastructure. Base URL:{' '}
             <code className="font-mono text-indigo-300 bg-white/5 px-1.5 py-0.5 rounded-md text-xs">
-              https://api.chioma.app/v1
+              https://api.huston-housing.app/v1
             </code>
           </p>
         </div>

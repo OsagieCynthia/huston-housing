@@ -62,8 +62,8 @@ const mockDetail: MaintenanceDetail = {
   propertyId: 'prop-001',
   tenant: {
     id: 'tenant-001',
-    name: 'Chioma Okafor',
-    email: 'chioma.okafor@email.com',
+    name: 'Houston Housing Okafor',
+    email: 'huston-housing.okafor@email.com',
     phone: '+234 805 123 4567',
   },
   title: 'Water leak in bathroom',
@@ -99,7 +99,7 @@ const mockDetail: MaintenanceDetail = {
       id: 'c-1',
       author: {
         id: 'tenant-001',
-        name: 'Chioma Okafor',
+        name: 'Houston Housing Okafor',
         role: 'tenant',
       },
       content: "The leak started yesterday evening. It's getting worse today.",

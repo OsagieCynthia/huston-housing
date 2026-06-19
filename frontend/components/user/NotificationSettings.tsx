@@ -12,7 +12,7 @@ import {
   NotificationSettingsState,
 } from './notifications.types';
 
-const EXTRA_SETTINGS_STORAGE_KEY = 'chioma_landlord_notification_settings';
+const EXTRA_SETTINGS_STORAGE_KEY = 'huston-housing_landlord_notification_settings';
 const preferencesQueryKey = ['landlord-notification-preferences'];
 
 type NotificationSettingsProps = {
@@ -240,7 +240,7 @@ export default function NotificationSettings({
             Notification Frequency
           </h3>
           <p className="mt-1 text-sm text-slate-300">
-            Choose how often Chioma should bundle landlord notifications.
+            Choose how often Houston Housing should bundle landlord notifications.
           </p>
 
           <div className="mt-5 grid gap-3 sm:grid-cols-3">

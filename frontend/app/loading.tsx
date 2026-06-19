@@ -11,7 +11,7 @@ export default function Loading() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-20"></span>
           <Image
             src="/logo_512.png"
-            alt="Chioma"
+            alt="Houston Housing"
             width={200}
             height={200}
             className="relative rounded-lg"
@@ -21,7 +21,7 @@ export default function Loading() {
 
         {/* Brand name */}
         <p className="text-lg font-semibold tracking-tight text-white">
-          Chioma
+          Houston Housing
         </p>
 
         {/* Subtle subtext */}

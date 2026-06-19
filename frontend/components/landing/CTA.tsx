@@ -33,7 +33,7 @@ export default function CTA() {
 
             <p className="text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto">
               Join thousands of landlords, tenants, and agents already using
-              Chioma to modernize their rental experience.
+              Houston Housing to modernize their rental experience.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

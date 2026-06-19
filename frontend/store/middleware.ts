@@ -34,7 +34,7 @@ export function withMiddleware<T>(
   [['zustand/devtools', never], ['zustand/immer', never]]
 > {
   return devtools(immer(creator), {
-    name: `chioma/${storeName}`,
+    name: `huston-housing/${storeName}`,
     enabled: process.env.NODE_ENV !== 'production',
   });
 }

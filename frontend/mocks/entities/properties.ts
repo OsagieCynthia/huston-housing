@@ -61,7 +61,7 @@ export const MOCK_PROPERTIES: Property[] = [
     beds: 1,
     baths: 1,
     sqft: 400,
-    manager: 'Chioma N.',
+    manager: 'Houston Housing N.',
     image: 'https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg',
     verified: false,
     latitude: 35.662,

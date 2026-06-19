@@ -1,16 +1,16 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { readChiomaState } from '@/lib/contracts/soroban-client';
+import { readHouston HousingState } from '@/lib/contracts/soroban-client';
 import { getContractIds } from '@/lib/contracts/config';
 
-export function useChiomaContractState() {
-  const { chioma } = getContractIds();
+export function useHouston HousingContractState() {
+  const { huston-housing } = getContractIds();
 
   return useQuery({
-    queryKey: ['chioma-contract-state', chioma],
-    enabled: Boolean(chioma),
-    queryFn: readChiomaState,
+    queryKey: ['huston-housing-contract-state', huston-housing],
+    enabled: Boolean(huston-housing),
+    queryFn: readHouston HousingState,
     staleTime: 120_000,
   });
 }

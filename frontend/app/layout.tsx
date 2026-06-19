@@ -15,11 +15,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || 'https://chioma-kappa.vercel.app',
+    process.env.NEXT_PUBLIC_APP_URL || 'https://huston-housing-kappa.vercel.app',
   ),
   title: {
-    default: 'Chioma — Blockchain-Powered Rentals',
-    template: '%s | Chioma',
+    default: 'Houston Housing — Blockchain-Powered Rentals',
+    template: '%s | Houston Housing',
   },
   description:
     'Automated commissions, zero disputes. Connect with landlords and tenants on the Stellar network.',

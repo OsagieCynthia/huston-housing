@@ -14,7 +14,7 @@ export default function OfflinePage() {
           You&rsquo;re offline
         </h1>
         <p className="mt-3 text-sm leading-6 text-slate-300">
-          Chioma cached this screen so you can still open the app shell.
+          Houston Housing cached this screen so you can still open the app shell.
           Reconnect to refresh listings, leases, messages, and payments.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">

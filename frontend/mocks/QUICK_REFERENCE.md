@@ -167,7 +167,7 @@ import { MOCK_USERS } from '@/mocks/entities/users';
 
 const user = Object.values(MOCK_USERS)
   .flat()
-  .find((u) => u.email === 'chioma.okafor@email.com');
+  .find((u) => u.email === 'huston-housing.okafor@email.com');
 ```
 
 ### Find Property by ID

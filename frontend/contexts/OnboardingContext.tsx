@@ -37,7 +37,7 @@ function emitOnboardingEvent(
   if (typeof window === 'undefined') return;
 
   window.dispatchEvent(
-    new CustomEvent('chioma:onboarding:event', {
+    new CustomEvent('huston-housing:onboarding:event', {
       detail: {
         eventName,
         payload,

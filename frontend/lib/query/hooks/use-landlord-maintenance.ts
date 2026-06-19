@@ -51,7 +51,7 @@ const mockMaintenanceRequests: MaintenanceRecord[] = [
     requestId: 'MNT-2026-001',
     propertyName: 'Sunset Apartments, Unit 4B',
     propertyId: 'prop-001',
-    tenantName: 'Chioma Okafor',
+    tenantName: 'Houston Housing Okafor',
     tenantId: 'tenant-001',
     title: 'Water leak in bathroom',
     description:

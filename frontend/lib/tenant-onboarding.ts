@@ -43,7 +43,7 @@ export interface TenantOnboardingData {
   skippedSteps: number[];
 }
 
-export const TENANT_ONBOARDING_STORAGE_KEY = 'chioma_tenant_onboarding_v1';
+export const TENANT_ONBOARDING_STORAGE_KEY = 'huston-housing_tenant_onboarding_v1';
 
 export const defaultTenantOnboardingData: TenantOnboardingData = {
   profile: {

@@ -38,19 +38,19 @@ fn test_successful_initialization() {
     let client = create_contract(&env);
 
     let admin = Address::generate(&env);
-    let chioma_contract = Address::generate(&env);
+    let huston-housing_contract = Address::generate(&env);
     let min_votes = 3u32;
 
     env.mock_all_auths();
 
-    let result = client.try_initialize(&admin, &min_votes, &chioma_contract);
+    let result = client.try_initialize(&admin, &min_votes, &huston-housing_contract);
     assert!(result.is_ok());
 
     let state = client.get_state().unwrap();
     assert_eq!(state.admin, admin);
     assert!(state.initialized);
     assert_eq!(state.min_votes_required, min_votes);
-    assert_eq!(state.chioma_contract, chioma_contract);
+    assert_eq!(state.huston-housing_contract, huston-housing_contract);
 }
 
 #[test]
@@ -60,9 +60,9 @@ fn test_initialize_fails_without_admin_auth() {
     let client = create_contract(&env);
 
     let admin = Address::generate(&env);
-    let chioma_contract = Address::generate(&env);
+    let huston-housing_contract = Address::generate(&env);
 
-    client.initialize(&admin, &3, &chioma_contract);
+    client.initialize(&admin, &3, &huston-housing_contract);
 }
 
 #[test]
@@ -72,12 +72,12 @@ fn test_double_initialization_fails() {
     let client = create_contract(&env);
 
     let admin = Address::generate(&env);
-    let chioma_contract = Address::generate(&env);
+    let huston-housing_contract = Address::generate(&env);
 
     env.mock_all_auths();
 
-    client.initialize(&admin, &3, &chioma_contract);
-    client.initialize(&admin, &3, &chioma_contract);
+    client.initialize(&admin, &3, &huston-housing_contract);
+    client.initialize(&admin, &3, &huston-housing_contract);
 }
 
 #[test]
@@ -134,7 +134,7 @@ fn test_add_arbiter_fails_when_already_exists() {
     client.add_arbiter(&admin, &arbiter);
 }
 
-// `raise_dispute` + cross-contract Chioma integration tests live in `tests_raise_dispute.rs`.
+// `raise_dispute` + cross-contract Houston Housing integration tests live in `tests_raise_dispute.rs`.
 
 #[test]
 #[should_panic(expected = "Error(Contract, #6)")]

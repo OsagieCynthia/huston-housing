@@ -72,7 +72,7 @@ const generateMockReferralStats = (): ReferralStats => ({
       createdAt: new Date(Date.now() - 3 * 86400000).toISOString(),
     },
   ],
-  referralCode: 'CHIOMA-TRUST-2024',
+  referralCode: 'HUSTON_HOUSING-TRUST-2024',
 });
 
 export default function TenantReferralsPage() {
@@ -135,7 +135,7 @@ export default function TenantReferralsPage() {
               </span>
             </h1>
             <p className="text-lg text-blue-100/80 leading-relaxed">
-              Share Chioma with property owners and managers. Earn{' '}
+              Share Houston Housing with property owners and managers. Earn{' '}
               <span className="text-white font-bold">10 USDC</span> for every
               successful referral.
             </p>

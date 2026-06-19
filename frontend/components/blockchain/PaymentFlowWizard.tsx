@@ -174,7 +174,7 @@ export function PaymentFlowWizard({
       <p className="text-xs text-slate-500">
         Community:{' '}
         <a
-          href="https://t.me/chiomagroup"
+          href="https://t.me/huston-housinggroup"
           target="_blank"
           rel="noopener noreferrer"
           className="text-sky-400 hover:underline"

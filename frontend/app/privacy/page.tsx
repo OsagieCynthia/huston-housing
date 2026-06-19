@@ -25,7 +25,7 @@ export default function PrivacyPage() {
                   1. Introduction
                 </h2>
                 <p className="mb-4 text-sm sm:text-base leading-relaxed">
-                  At Chioma Properties, we take your privacy seriously. This
+                  At Houston Housing Properties, we take your privacy seriously. This
                   Privacy Policy describes how we collect, use, disclose, and
                   safeguard your information when you visit our website, use our
                   mobile application, or engage with our property listing and
@@ -99,7 +99,7 @@ export default function PrivacyPage() {
                   <li>Respond to your comments, questions, and requests</li>
                   <li>
                     Communicate with you about products, services, offers,
-                    promotions, rewards, and events offered by Chioma Properties
+                    promotions, rewards, and events offered by Houston Housing Properties
                   </li>
                   <li>Monitor and analyze trends, usage, and activities</li>
                   <li>
@@ -264,7 +264,7 @@ export default function PrivacyPage() {
                 </ul>
                 <p className="text-sm sm:text-base leading-relaxed">
                   To exercise any of these rights, please contact us at
-                  privacy@chiomaproperties.com. We will respond to your request
+                  privacy@huston-housingproperties.com. We will respond to your request
                   within 30 days.
                 </p>
               </section>
@@ -394,11 +394,11 @@ export default function PrivacyPage() {
                 </h2>
                 <p className="mb-4 text-sm sm:text-base leading-relaxed">
                   If you have questions or comments about this policy, you may
-                  email us at privacy@chiomaproperties.com, call our customer
-                  service line at +234 800 CHIOMA (244662), or mail us at:
+                  email us at privacy@huston-housingproperties.com, call our customer
+                  service line at +234 800 HUSTON_HOUSING (244662), or mail us at:
                 </p>
                 <p className="text-sm sm:text-base leading-relaxed">
-                  Chioma Properties
+                  Houston Housing Properties
                   <br />
                   Data Protection Officer
                   <br />

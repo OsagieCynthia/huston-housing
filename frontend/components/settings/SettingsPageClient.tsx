@@ -17,7 +17,7 @@ interface SettingsPageClientProps {
   requireAuthGuard?: boolean;
 }
 
-const SETTINGS_STORAGE_KEY = 'chioma_user_preferences';
+const SETTINGS_STORAGE_KEY = 'huston-housing_user_preferences';
 
 const DEFAULT_PREFERENCES: UserPreferences = {
   notifications: {
@@ -380,7 +380,7 @@ export function SettingsPageClient({
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({ deviceName: 'Chioma Web' }),
+        body: JSON.stringify({ deviceName: 'Houston Housing Web' }),
       });
 
       if (!response.ok) {
@@ -607,7 +607,7 @@ export function SettingsPageClient({
 
         <SettingsCard
           title="Appearance"
-          description="Choose how Chioma should look across sessions."
+          description="Choose how Houston Housing should look across sessions."
         >
           <ThemeSelector
             value={preferences.appearanceTheme}

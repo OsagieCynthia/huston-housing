@@ -33,7 +33,7 @@ export interface AgentOnboardingData {
   completedAt: string | null;
 }
 
-export const AGENT_ONBOARDING_STORAGE_KEY = 'chioma_agent_onboarding_v1';
+export const AGENT_ONBOARDING_STORAGE_KEY = 'huston-housing_agent_onboarding_v1';
 
 export const defaultAgentOnboardingData: AgentOnboardingData = {
   profile: {

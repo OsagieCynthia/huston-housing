@@ -1,6 +1,6 @@
 # Mock Data Structure
 
-This directory contains all mock/dummy data for the Chioma frontend application. The data is organized by feature and entity type for easy maintenance and scalability.
+This directory contains all mock/dummy data for the Houston Housing frontend application. The data is organized by feature and entity type for easy maintenance and scalability.
 
 ## Directory Structure
 

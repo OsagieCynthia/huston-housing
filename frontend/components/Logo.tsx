@@ -30,14 +30,14 @@ export default function Logo({
       <div className={`flex items-center ${className}`}>
         <Image
           src="/logo_256.png"
-          alt="Chioma logo"
+          alt="Houston Housing logo"
           width={px}
           height={px}
           className="rounded-lg object-contain flex-shrink-0"
           style={{ width: px, height: px }}
           priority
         />
-        {showText && <span className={resolvedText}>Chioma</span>}
+        {showText && <span className={resolvedText}>Houston Housing</span>}
       </div>
     );
   }
@@ -46,13 +46,13 @@ export default function Logo({
     <Link href={href} className={`flex items-center ${className}`}>
       <Image
         src="/logo_256.png"
-        alt="Chioma logo"
+        alt="Houston Housing logo"
         width={px}
         height={px}
         className="rounded-lg"
         priority
       />
-      {showText && <span className={resolvedText}>Chioma</span>}
+      {showText && <span className={resolvedText}>Houston Housing</span>}
     </Link>
   );
 }

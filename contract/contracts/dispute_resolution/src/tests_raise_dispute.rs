@@ -9,27 +9,27 @@ fn create_contract(env: &Env) -> DisputeResolutionContractClient<'_> {
     DisputeResolutionContractClient::new(env, &contract_id)
 }
 
-/// Minimal Chioma stand-in used to validate `dispute_resolution::raise_dispute`'s
+/// Minimal Houston Housing stand-in used to validate `dispute_resolution::raise_dispute`'s
 /// cross-contract agreement fetch (`symbol_short!("get_agr")`).
 ///
 /// Storage layout:
 /// - instance key: `agreement_id` -> `RentAgreement`
 #[contract]
-pub struct MockChiomaContract;
+pub struct MockHouston HousingContract;
 
 #[contractimpl]
-impl MockChiomaContract {
+impl MockHouston HousingContract {
     pub fn get_agr(env: Env, agreement_id: String) -> Option<RentAgreement> {
         env.storage().instance().get(&agreement_id)
     }
 }
 
-fn deploy_mock_chioma(env: &Env) -> Address {
-    env.register(MockChiomaContract, ())
+fn deploy_mock_huston-housing(env: &Env) -> Address {
+    env.register(MockHouston HousingContract, ())
 }
 
-fn put_agreement(env: &Env, chioma: &Address, agreement: &RentAgreement) {
-    env.as_contract(chioma, || {
+fn put_agreement(env: &Env, huston-housing: &Address, agreement: &RentAgreement) {
+    env.as_contract(huston-housing, || {
         env.storage()
             .instance()
             .set(&agreement.agreement_id, agreement);
@@ -71,7 +71,7 @@ fn raise_dispute_success_cross_contract_tenant() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -84,9 +84,9 @@ fn raise_dispute_success_cross_contract_tenant() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
 
     let details_hash = String::from_str(&env, "QmDetails");
     let result = client.try_raise_dispute(&tenant, &agreement_id, &details_hash);
@@ -105,7 +105,7 @@ fn raise_dispute_success_cross_contract_landlord() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -118,9 +118,9 @@ fn raise_dispute_success_cross_contract_landlord() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
 
     let details_hash = String::from_str(&env, "QmDetails");
     let result = client.try_raise_dispute(&landlord, &agreement_id, &details_hash);
@@ -134,7 +134,7 @@ fn raise_dispute_fails_invalid_details_hash() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -146,9 +146,9 @@ fn raise_dispute_fails_invalid_details_hash() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
 
     let empty = String::from_str(&env, "");
     let result = client.try_raise_dispute(&tenant, &agreement_id, &empty);
@@ -162,9 +162,9 @@ fn raise_dispute_fails_agreement_not_found() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
 
     let tenant = Address::generate(&env);
     let missing_id = String::from_str(&env, "missing");
@@ -181,7 +181,7 @@ fn raise_dispute_fails_invalid_agreement_state() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -193,9 +193,9 @@ fn raise_dispute_fails_invalid_agreement_state() {
         &tenant,
         AgreementStatus::Draft,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
 
     let details_hash = String::from_str(&env, "QmDetails");
     let result = client.try_raise_dispute(&tenant, &agreement_id, &details_hash);
@@ -209,7 +209,7 @@ fn raise_dispute_fails_unauthorized_raiser() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -223,9 +223,9 @@ fn raise_dispute_fails_unauthorized_raiser() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
 
     let details_hash = String::from_str(&env, "QmDetails");
     let result = client.try_raise_dispute(&stranger, &agreement_id, &details_hash);
@@ -239,7 +239,7 @@ fn raise_dispute_fails_when_dispute_already_exists() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -251,9 +251,9 @@ fn raise_dispute_fails_when_dispute_already_exists() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
 
     let details_hash = String::from_str(&env, "QmDetails");
     let first = client.try_raise_dispute(&tenant, &agreement_id, &details_hash);
@@ -270,7 +270,7 @@ fn vote_on_dispute_happy_path_after_raise_dispute() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -284,9 +284,9 @@ fn vote_on_dispute_happy_path_after_raise_dispute() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
     client.add_arbiter(&admin, &arbiter);
 
     let details_hash = String::from_str(&env, "QmDetails");
@@ -308,7 +308,7 @@ fn resolve_dispute_favor_landlord_after_raise_dispute() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -324,9 +324,9 @@ fn resolve_dispute_favor_landlord_after_raise_dispute() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
     client.add_arbiter(&admin, &a1);
     client.add_arbiter(&admin, &a2);
     client.add_arbiter(&admin, &a3);
@@ -359,7 +359,7 @@ fn resolve_dispute_insufficient_votes_after_raise_dispute() {
 
     let client = create_contract(&env);
     let admin = Address::generate(&env);
-    let chioma = deploy_mock_chioma(&env);
+    let huston-housing = deploy_mock_huston-housing(&env);
 
     let landlord = Address::generate(&env);
     let tenant = Address::generate(&env);
@@ -373,9 +373,9 @@ fn resolve_dispute_insufficient_votes_after_raise_dispute() {
         &tenant,
         AgreementStatus::Active,
     );
-    put_agreement(&env, &chioma, &agreement);
+    put_agreement(&env, &huston-housing, &agreement);
 
-    client.initialize(&admin, &3, &chioma);
+    client.initialize(&admin, &3, &huston-housing);
     client.add_arbiter(&admin, &a1);
 
     let details_hash = String::from_str(&env, "QmDetails");

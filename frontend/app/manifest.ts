@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Chioma',
-    short_name: 'Chioma',
+    name: 'Houston Housing',
+    short_name: 'Houston Housing',
     description:
       'Blockchain-powered housing rentals with transparent leases, payments, and offline-ready access.',
     start_url: '/',
@@ -43,7 +43,7 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: '1200x630',
         type: 'image/png',
         form_factor: 'wide',
-        label: 'Chioma landing page preview',
+        label: 'Houston Housing landing page preview',
       },
     ],
   };

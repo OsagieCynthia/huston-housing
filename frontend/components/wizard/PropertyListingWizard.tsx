@@ -137,7 +137,7 @@ export const PropertyListingWizard: React.FC<PropertyListingWizardProps> = ({
             Create Rental Property
           </h1>
           <p className="text-neutral-500 max-w-lg mx-auto">
-            Fill out the details below to list your property on Chioma Protocol
+            Fill out the details below to list your property on Houston Housing Protocol
             and start attracting top-tier tenants.
           </p>
         </header>

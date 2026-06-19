@@ -33,7 +33,7 @@ export default function DeveloperLayout({ children }: { children: ReactNode }) {
                 </h1>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
                   Configure webhooks, inspect delivery activity, and validate
-                  payloads for external systems connected to Chioma.
+                  payloads for external systems connected to Houston Housing.
                 </p>
               </div>
 

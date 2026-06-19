@@ -36,7 +36,7 @@ const socialLinks = [
   { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
   { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
   { icon: Github, href: 'https://github.com', label: 'GitHub' },
-  { icon: Mail, href: 'mailto:hello@chioma.io', label: 'Email' },
+  { icon: Mail, href: 'mailto:hello@huston-housing.io', label: 'Email' },
 ];
 
 export default function Footer() {
@@ -143,7 +143,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-blue-200/60 text-sm">
-            © {new Date().getFullYear()} Chioma. All rights reserved.
+            © {new Date().getFullYear()} Houston Housing. All rights reserved.
           </p>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />

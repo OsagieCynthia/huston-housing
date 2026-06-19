@@ -214,7 +214,7 @@ export function WebhookForm({
           <input
             value={url}
             onChange={(event) => setUrl(event.target.value)}
-            placeholder="https://example.com/webhooks/chioma"
+            placeholder="https://example.com/webhooks/huston-housing"
             className="mt-2 w-full rounded-xl border border-neutral-200 px-4 py-2.5 text-sm text-neutral-900 outline-none transition focus:border-blue-500"
           />
         </div>
@@ -319,7 +319,7 @@ export function WebhookForm({
             value={headersText}
             onChange={(event) => setHeadersText(event.target.value)}
             rows={4}
-            placeholder={'X-Webhook-Source: chioma\nX-Client: developer-portal'}
+            placeholder={'X-Webhook-Source: huston-housing\nX-Client: developer-portal'}
             className="mt-2 w-full rounded-xl border border-neutral-200 px-4 py-2.5 font-mono text-sm text-neutral-900 outline-none transition focus:border-blue-500"
           />
         </div>

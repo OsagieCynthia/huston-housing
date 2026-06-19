@@ -171,7 +171,7 @@ async function getProperty(id: string): Promise<PropertyData | null> {
         { name: 'Laundry Service' },
       ],
       owner: {
-        name: 'Chioma N.',
+        name: 'Houston Housing N.',
       },
       rentalUnits: {
         total: 8,

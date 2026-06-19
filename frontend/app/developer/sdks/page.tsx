@@ -7,13 +7,13 @@ const SDKS = [
   {
     id: 'js',
     language: 'JavaScript / TypeScript',
-    packageName: '@chioma/sdk',
-    installCmd: 'npm install @chioma/sdk',
+    packageName: '@huston-housing/sdk',
+    installCmd: 'npm install @huston-housing/sdk',
     version: '1.2.4',
     status: 'stable',
-    repoUrl: 'https://github.com/chioma-protocol/chioma-js',
+    repoUrl: 'https://github.com/huston-housing-protocol/huston-housing-js',
     description:
-      'Full-featured SDK for Node.js and browser environments. Includes typed request/response interfaces for all Chioma API resources.',
+      'Full-featured SDK for Node.js and browser environments. Includes typed request/response interfaces for all Houston Housing API resources.',
     features: [
       'TypeScript-first',
       'Tree-shakeable',
@@ -24,11 +24,11 @@ const SDKS = [
   {
     id: 'python',
     language: 'Python',
-    packageName: 'chioma-sdk',
-    installCmd: 'pip install chioma-sdk',
+    packageName: 'huston-housing-sdk',
+    installCmd: 'pip install huston-housing-sdk',
     version: '0.9.1',
     status: 'beta',
-    repoUrl: 'https://github.com/chioma-protocol/chioma-python',
+    repoUrl: 'https://github.com/huston-housing-protocol/huston-housing-python',
     description:
       'Async-first Python SDK built on httpx. Supports all payment and listing endpoints with Pydantic models.',
     features: [
@@ -41,13 +41,13 @@ const SDKS = [
   {
     id: 'rust',
     language: 'Rust',
-    packageName: 'chioma',
-    installCmd: 'cargo add chioma',
+    packageName: 'huston-housing',
+    installCmd: 'cargo add huston-housing',
     version: '0.3.0',
     status: 'beta',
-    repoUrl: 'https://github.com/chioma-protocol/chioma-rs',
+    repoUrl: 'https://github.com/huston-housing-protocol/huston-housing-rs',
     description:
-      'High-performance Rust crate for backend services that need to interact with the Chioma payment layer and Stellar network.',
+      'High-performance Rust crate for backend services that need to interact with the Houston Housing payment layer and Stellar network.',
     features: [
       'No-std compatible',
       'WASM target',
@@ -58,11 +58,11 @@ const SDKS = [
   {
     id: 'go',
     language: 'Go',
-    packageName: 'github.com/chioma-protocol/chioma-go',
-    installCmd: 'go get github.com/chioma-protocol/chioma-go',
+    packageName: 'github.com/huston-housing-protocol/huston-housing-go',
+    installCmd: 'go get github.com/huston-housing-protocol/huston-housing-go',
     version: '0.1.0',
     status: 'alpha',
-    repoUrl: 'https://github.com/chioma-protocol/chioma-go',
+    repoUrl: 'https://github.com/huston-housing-protocol/huston-housing-go',
     description:
       'Idiomatic Go client with context propagation, retries, and structured logging support.',
     features: [
@@ -102,7 +102,7 @@ export default function SdksPage() {
       <div>
         <h2 className="text-2xl font-bold text-white">SDKs & Libraries</h2>
         <p className="text-blue-200/60 text-sm mt-1">
-          Official client libraries maintained by the Chioma core team. All SDKs
+          Official client libraries maintained by the Houston Housing core team. All SDKs
           are open-source.
         </p>
       </div>

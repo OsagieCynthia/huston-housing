@@ -36,7 +36,7 @@ export function exportTransactionsToCsv(transactions: Transaction[]): void {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `chioma-transactions-${format(new Date(), 'yyyy-MM-dd')}.csv`;
+  a.download = `huston-housing-transactions-${format(new Date(), 'yyyy-MM-dd')}.csv`;
   a.click();
   URL.revokeObjectURL(url);
 }

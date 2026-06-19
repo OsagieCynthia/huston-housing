@@ -29,7 +29,7 @@ import {
   useThreatStats,
 } from '@/lib/query/hooks/use-security-dashboard';
 
-const RESPONSE_LOG_STORAGE_KEY = 'chioma-admin-security-response-log';
+const RESPONSE_LOG_STORAGE_KEY = 'huston-housing-admin-security-response-log';
 
 type SeverityFilter = DashboardSeverity | 'all';
 type KindFilter = DashboardItemKind | 'all';
